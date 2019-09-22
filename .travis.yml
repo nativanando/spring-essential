@@ -1,3 +1,8 @@
 language: java
 jdk:
   - openjdk8
+services:
+  - mysql
+before_script:
+  - mysql -e 'create database spring_essential;'
+  - echo "USE mysql;\nUPDATE user SET password=PASSWORD('adminspring') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
